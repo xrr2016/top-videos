@@ -7,18 +7,20 @@
   </mat-toolbar-row>
 </mat-toolbar>
 
-<mat-tab-group mat-align-tabs="center" animationDuration="0ms">
+<mat-tab-group class="tabs-group" animationDuration="0ms">
   <mat-tab label="Bilibili">
-    <mat-list class="container">
+    <mat-action-list class="container tab-list">
       <mat-list-item
-        matRipple
-        *ngFor="let folder of folders; let index = index; trackBy: index"
+        class="tab-list__item"
+        *ngFor="let video of videos; let index = index; trackBy: index"
       >
-        <p>{{ index }}</p>
-        <h4 mat-line>{{ folder.name }}</h4>
-        <mat-icon mat-list-icon>folder</mat-icon>
+        <span class="rank">{{ video.rank }}</span>
+        <a class="title" [href]="video.url" target="_brank">{{
+          video.title
+        }}</a>
+        <mat-icon class="icon" (click)="video.toggleFavorite()">star</mat-icon>
       </mat-list-item>
-    </mat-list>
+    </mat-action-list>
   </mat-tab>
   <mat-tab label="Acfun">
     <div class="container">Content 2</div>

@@ -1,30 +1,22 @@
-import { Component } from '@angular/core'
-
-export interface Section {
-  name: string
-  updated: Date
-}
+import { Component, OnInit } from '@angular/core'
+import { Origin, Video } from './models/video'
+import { VideoService } from './services/video.service'
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'top vidoes'
 
-  folders: Section[] = [
-    {
-      name: 'Photos',
-      updated: new Date('1/1/16')
-    },
-    {
-      name: 'Recipes',
-      updated: new Date('1/17/16')
-    },
-    {
-      name: 'Work',
-      updated: new Date('1/28/16')
-    }
-  ]
+  videos: Video[]
+
+  constructor(private videoService: VideoService) {}
+
+  ngOnInit() {
+    this.videoService
+      .getTopVideos(Origin.BILIBILI)
+      .subscribe((videos: Video[]) => (this.videos = videos))
+  }
 }

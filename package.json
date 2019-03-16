@@ -8,8 +8,8 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "lambda:serve": "netlify-lambda serve src/lambda",
-    "lambda:build": "netlify-lambda build src/lambda"
+    "lambda:serve": "netlify-lambda serve ./src/lambda",
+    "lambda:build": "netlify-lambda build ./src/lambda"
   },
   "private": true,
   "dependencies": {
@@ -23,6 +23,7 @@
     "@angular/platform-browser": "~7.2.0",
     "@angular/platform-browser-dynamic": "~7.2.0",
     "@angular/router": "~7.2.0",
+    "cheerio": "^1.0.0-rc.2",
     "core-js": "^2.5.4",
     "rxjs": "~6.3.3",
     "tslib": "^1.9.0",
