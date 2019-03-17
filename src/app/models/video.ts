@@ -10,6 +10,7 @@ export class Video {
   readonly origin: Origin
   readonly rank: number
   readonly title: string
+  readonly description: string
   readonly url: string
   readonly score?: number
   public favorite: boolean
@@ -18,6 +19,7 @@ export class Video {
     origin: Origin,
     rank: number,
     title: string,
+    description: string,
     url: string,
     score: number,
     favorite: boolean
@@ -26,6 +28,7 @@ export class Video {
     this.origin = origin
     this.rank = rank
     this.title = title
+    this.description = description
     this.score = score
     this.favorite = false
   }

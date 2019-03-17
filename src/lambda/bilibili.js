@@ -29,8 +29,7 @@ exports.handler = async (event, context) => {
             .find('.pts')
             .first()
             .text()
-        ),
-        favorite: false
+        )
       })
     })
 

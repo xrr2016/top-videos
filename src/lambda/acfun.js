@@ -39,8 +39,7 @@ exports.handler = async (event, context) => {
         origin: 'ACFUN',
         title: item.title,
         url: `${BASE}${item.channel_path}/ac${item.id}`,
-        score: item.view_count,
-        favorite: false
+        score: item.view_count
       }
     })
   }

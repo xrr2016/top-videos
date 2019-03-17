@@ -6,32 +6,34 @@
 const cheerio = require('cheerio')
 const { request } = require('../utils/index')
 
-const BASE = 'https://www.bilibili.com/ranking/all/0/1/3'
+const BASE = 'http://top.iqiyi.com/rebobang.html'
 
 exports.handler = async (event, context) => {
-  const data = await request(BASE).then(res => res)
+  const data = await request(BASE, false).then(res => res)
   const $ = cheerio.load(data)
 
   const rankList = []
 
-  $('.rank-list')
+  $('.topDetails-list')
     .children()
     .each(function(index, ele) {
       const $item = $(ele)
-      const $title = $item.find('.title')
+      const $content = $item.find('.topDetails-con')
+      const $link = $content.find('a')
 
       rankList.push({
         rank: index,
-        origin: 'BILIBILI',
-        title: $title.text(),
-        url: $title.attr('href'),
+        origin: 'IQIYI',
+        title: $link.attr('title'),
+        description: $content.find('h3').text(),
+        url: $link.attr('href'),
         score: parseInt(
-          $item
-            .find('.pts')
-            .first()
+          $content
+            .find('em')
+            .last()
             .text()
-        ),
-        favorite: false
+            .slice(3)
+        )
       })
     })
 
