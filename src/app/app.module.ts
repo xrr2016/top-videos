@@ -6,15 +6,17 @@ import { AppMaterialModule } from './app-material.module'
 import { AppRoutingModule } from './app-routing.module'
 import { AppComponent } from './app.component'
 import { AboutComponent } from './pages/about/about.component'
-import { FavoritesComponent } from './pages/favorites/favorites.component'
-import { HomeComponent } from './pages/home/home.component'
+import { FavoriteComponent } from './pages/favorite/favorite.component'
+import { HomeComponent } from './pages/home/home.component';
+import { VideoItemComponent } from './components/video-item/video-item.component'
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     AboutComponent,
-    FavoritesComponent
+    FavoriteComponent,
+    VideoItemComponent
   ],
   imports: [
     BrowserModule,

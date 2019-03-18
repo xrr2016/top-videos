@@ -4,6 +4,8 @@ import {
   MatCardModule,
   MatIconModule,
   MatListModule,
+  MatMenuModule,
+  MatProgressSpinnerModule,
   MatRippleModule,
   MatTabsModule,
   MatToolbarModule
@@ -13,11 +15,13 @@ import {
   exports: [
     MatRippleModule,
     MatCardModule,
+    MatMenuModule,
     MatListModule,
     MatTabsModule,
     MatButtonModule,
     MatIconModule,
-    MatToolbarModule
+    MatToolbarModule,
+    MatProgressSpinnerModule
   ]
 })
 export class AppMaterialModule {}

@@ -1,25 +1,14 @@
-// .app-toolbar {
-// }
+.app-toolbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  height: 52px;
+  min-height: 52px;
+}
 
 .app-toolbar__row {
   padding: 0;
   justify-content: space-between;
-}
-
-.tab-list {
-  padding: 1rem 0;
-}
-
-.tab-list__item {
-  justify-content: space-between;
-}
-
-.tab-list__item:not(:last-of-type) {
-  margin-bottom: 0.5rem;
-}
-
-.tab-list__item .title {
-  flex: 1;
-  padding: 0 1rem;
-  margin: 0;
+  height: 100%;
 }

@@ -1,39 +1,17 @@
 <mat-toolbar class="app-toolbar" color="primary">
   <mat-toolbar-row class="container app-toolbar__row">
-    <span>{{ title | uppercase }}</span>
-    <button mat-icon-button>
-      <mat-icon>favorite</mat-icon>
+    <a mat-button [routerLink]="'/'">{{ title | uppercase }}</a>
+    <button mat-icon-button [matMenuTriggerFor]="menu">
+      <mat-icon>more_vert</mat-icon>
     </button>
   </mat-toolbar-row>
 </mat-toolbar>
 
-<mat-tab-group class="tabs-group" animationDuration="0ms">
-  <mat-tab label="Bilibili">
-    <mat-action-list class="container tab-list">
-      <mat-list-item
-        class="tab-list__item"
-        *ngFor="let video of videos; let index = index; trackBy: index"
-      >
-        <span class="rank">{{ video.rank }}</span>
-        <a class="title" [href]="video.url" target="_brank">{{
-          video.title
-        }}</a>
-        <mat-icon class="icon" (click)="video.toggleFavorite()">star</mat-icon>
-      </mat-list-item>
-    </mat-action-list>
-  </mat-tab>
-  <mat-tab label="Acfun">
-    <div class="container">Content 2</div>
-  </mat-tab>
-  <mat-tab label="腾讯视频">
-    <div class="container">Content 3</div>
-  </mat-tab>
-  <mat-tab label="爱奇艺">
-    <div class="container">Content 2</div>
-  </mat-tab>
-  <mat-tab label="优酷视频">
-    <div class="container">Content 3</div>
-  </mat-tab>
-</mat-tab-group>
+<mat-menu #menu="matMenu">
+  <a mat-menu-item [routerLink]="'favorite'">我的收藏</a>
+  <a mat-menu-item [routerLink]="'about'">关于本站</a>
+</mat-menu>
 
-<router-outlet></router-outlet>
+<main>
+  <router-outlet></router-outlet>
+</main>

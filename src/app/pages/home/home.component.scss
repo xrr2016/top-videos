@@ -1,0 +1,22 @@
+// Copyright (c) 2019 轻剑快马
+//
+// This software is released under the MIT License.
+// https://opensource.org/licenses/MIT
+
+$content-height: calc(100vh - 52px - 49px - 32px);
+
+.spiner-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: $content-height;
+}
+
+.tab-list {
+  position: relative;
+  padding: 1rem 0;
+  height: $content-height;
+  max-height: $content-height;
+  overflow-x: hidden;
+  overflow-y: auto;
+}

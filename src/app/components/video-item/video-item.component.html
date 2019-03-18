@@ -1,0 +1,7 @@
+<mat-list-item class="video-item">
+  <span class="rank">{{ video.rank + 1 }}</span>
+  <a class="title" [href]="video.url" target="_brank"
+    >{{ video.title }} {{ video?.description }}
+  </a>
+  <mat-icon class="icon" (click)="video.toggleFavorite()">star</mat-icon>
+</mat-list-item>

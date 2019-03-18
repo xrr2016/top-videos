@@ -1,7 +1,3 @@
-// Copyright (c) 2019 轻剑快马
-//
-// This software is released under the MIT License.
-// https://opensource.org/licenses/MIT
 const cheerio = require('cheerio')
 const { request } = require('../utils/index')
 
@@ -24,6 +20,7 @@ exports.handler = async (event, context) => {
         origin: 'BILIBILI',
         title: $title.text(),
         url: $title.attr('href'),
+        image: $item.find('img').attr('src'),
         score: parseInt(
           $item
             .find('.pts')

@@ -1,0 +1,17 @@
+// Copyright (c) 2019 轻剑快马
+//
+// This software is released under the MIT License.
+// https://opensource.org/licenses/MIT
+
+.video-item {
+  margin-bottom: 0.5rem;
+  justify-content: space-between;
+  .title {
+    flex: 1;
+    padding: 0 1rem;
+    margin: 0;
+  }
+  .cover {
+    width: 240px;
+  }
+}
