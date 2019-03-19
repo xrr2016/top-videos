@@ -4,7 +4,6 @@
 // https://opensource.org/licenses/MIT
 
 .video-item {
-  margin-bottom: 0.5rem;
   justify-content: space-between;
   color: #666;
   &:hover {
@@ -12,12 +11,12 @@
   }
   .title {
     flex: 1;
-    padding: 0 1rem;
     margin: 0;
     color: inherit;
     text-decoration: none;
   }
-  .cover {
-    width: 240px;
+  .score {
+    font-size: 0.8em;
+    padding-right: 0.5rem;
   }
 }

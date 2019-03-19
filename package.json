@@ -1,9 +1,9 @@
 {
-  "name": "top-vidoes",
+  "name": "top-videos",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve --proxy-config proxy.config.json",
+    "start": "ng serve --proxy-config proxy.config.json --open",
     "build": "ng build --prod --aot && npm run lambda:build",
     "test": "ng test",
     "lint": "ng lint",

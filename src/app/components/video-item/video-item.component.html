@@ -1,8 +1,11 @@
-<mat-list-item class="video-item">
-  <span class="rank">{{ video.rank + 1 }}</span>
+<!-- <mat-list-item class="video-item">
+
+</mat-list-item> -->
+<li class="video-item">
   <a class="title" [href]="video.url" target="_brank"
-    >{{ video.title }} {{ video?.description }}
-  </a>
+    >{{ video.title }} {{ video?.description }}</a
+  >
+  <span class="score">{{ video?.score }}</span>
   <mat-icon class="icon" (click)="video.toggleFavorite()">star</mat-icon>
-  <mat-divider></mat-divider>
-</mat-list-item>
+</li>
+<mat-divider></mat-divider>
