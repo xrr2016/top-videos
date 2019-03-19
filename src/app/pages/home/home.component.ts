@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core'
 import { MatTabChangeEvent } from '@angular/material/tabs'
-import { Origin, Video } from 'src/app/models/video'
+import { Origin } from 'src/app/models/video'
 import { VideoService } from 'src/app/services/video.service'
 
 @Component({
@@ -9,7 +9,7 @@ import { VideoService } from 'src/app/services/video.service'
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-  videos: Video[]
+  videos: []
   isLoading = true
   origin = Origin.BILIBILI
 
@@ -46,9 +46,15 @@ export class HomeComponent implements OnInit {
 
   getVideos() {
     this.isLoading = true
-    this.videoService.getTopVideos(this.origin).subscribe((videos: Video[]) => {
-      this.videos = videos
-      this.isLoading = false
-    })
+    this.videoService.getTopVideos(this.origin).subscribe(
+      (videos: []) => {
+        this.videos = videos
+        this.isLoading = false
+        console.log('this.videos :', this.videos)
+      },
+      err => {
+        console.log('err :', err)
+      }
+    )
   }
 }

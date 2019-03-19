@@ -10,32 +10,37 @@
   <mat-tab label="优酷视频"> </mat-tab>
 </mat-tab-group>
 
-<span [ngSwitch]="origin">
-  <p *ngSwitchCase="'TENCENT'">
-    TENCENT
-  </p>
-  <p *ngSwitchCase="'YOUKU'">
-    YOUKU
-  </p>
-  <p *ngSwitchDefault>
-    bilibili
-  </p>
-</span>
-
 <ng-container *ngIf="isLoading; else elseTemplate">
   <div class="spiner-container">
     <mat-spinner class="spiner" [diameter]="48"></mat-spinner>
   </div>
 </ng-container>
 <ng-template #elseTemplate>
-  <mat-action-list class="tab-list">
-    <div class="container">
-      <app-video-item
-        *ngFor="let video of videos; let index = index; trackBy: index"
-        [video]="video"
-      ></app-video-item>
+  <ng-container
+    *ngIf="origin === 'TENCENT' || origin === 'YOUKU'; else elseTemplate"
+  >
+    <div *ngFor="let item of videos; let index = index">
+      <mat-action-list class="tab-list">
+        <div class="container">
+          <p>{{ item.type }}</p>
+          <app-video-item
+            *ngFor="let video of item.list; let index = index"
+            [video]="video"
+          ></app-video-item>
+        </div>
+      </mat-action-list>
     </div>
-  </mat-action-list>
+  </ng-container>
+  <ng-template #elseTemplate>
+    <mat-action-list class="tab-list">
+      <div class="container">
+        <app-video-item
+          *ngFor="let video of videos; let index = index"
+          [video]="video"
+        ></app-video-item>
+      </div>
+    </mat-action-list>
+  </ng-template>
 </ng-template>
 
 <!-- <img class="cover" [src]="video.image" [alt]="video.title" /> -->

@@ -26,6 +26,10 @@ exports.handler = async (event, context) => {
       const $item = $(item)
       const $link = $item.find('a.figure')
 
+      if (list.length > 19) {
+        return
+      }
+
       list.push({
         rank: idx,
         origin: 'TENCENT',

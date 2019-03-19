@@ -21,6 +21,10 @@ exports.handler = async (event, context) => {
       const $content = $item.find('.topDetails-con')
       const $link = $content.find('a')
 
+      if (rankList.length > 19) {
+        return
+      }
+
       rankList.push({
         rank: index,
         origin: 'IQIYI',

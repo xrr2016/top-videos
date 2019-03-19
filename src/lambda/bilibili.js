@@ -15,6 +15,10 @@ exports.handler = async (event, context) => {
       const $item = $(ele)
       const $title = $item.find('.title')
 
+      if (rankList.length > 19) {
+        return
+      }
+
       rankList.push({
         rank: index,
         origin: 'BILIBILI',

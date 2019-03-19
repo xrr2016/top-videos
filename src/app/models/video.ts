@@ -1,8 +1,8 @@
 export enum Origin {
   BILIBILI = 'BILIBILI',
   ACFUN = 'ACFUN',
-  TENCENT = 'TENCENT',
   IQIYI = 'IQIYI',
+  TENCENT = 'TENCENT',
   YOUKU = 'YOUKU'
 }
 
