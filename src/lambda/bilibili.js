@@ -1,44 +1,32 @@
-const cheerio = require('cheerio')
 const { request } = require('../utils/index')
+const API = 'https://api.bilibili.com/x/web-interface/ranking?day=3&rid='
 
-const BASE = 'https://www.bilibili.com/ranking/all/0/1/3'
+function generateUrl(rid = 0) {
+  return `${API}${rid}`
+}
 
 exports.handler = async (event, context) => {
-  const data = await request(BASE).then(res => res)
-  const $ = cheerio.load(data)
+  const { rid } = event.queryStringParameters
+  const url = generateUrl(rid)
+  const list = await request(url).then(res => JSON.parse(res).data.list)
+  const rank = []
 
-  const rankList = []
-
-  $('.rank-list')
-    .children()
-    .each(function(index, ele) {
-      const $item = $(ele)
-      const $title = $item.find('.title')
-
-      if (rankList.length > 19) {
-        return
-      }
-
-      rankList.push({
-        rank: index + 1,
-        origin: 'BILIBILI',
-        title: $title.text(),
-        url: $title.attr('href'),
-        image: $item.find('img').attr('src'),
-        score: parseInt(
-          $item
-            .find('.pts')
-            .first()
-            .text()
-        )
-      })
+  list.forEach((item, index) => {
+    rank.push({
+      url: `https://www.bilibili.com/video/av${item.aid}`,
+      rank: index + 1,
+      title: item.title,
+      play: item.play,
+      image: item.pic,
+      author: item.author
     })
+  })
 
   return {
-    statusCode: 200,
     headers: {
       'Content-Type': 'application/json'
     },
-    body: JSON.stringify(rankList)
+    statusCode: 200,
+    body: JSON.stringify(rank)
   }
 }

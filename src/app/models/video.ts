@@ -1,38 +1,27 @@
-export enum Origin {
-  BILIBILI = 'BILIBILI',
-  ACFUN = 'ACFUN',
-  IQIYI = 'IQIYI',
-  TENCENT = 'TENCENT',
-  YOUKU = 'YOUKU'
-}
-
 export class Video {
-  readonly origin: Origin
+  readonly url: string
   readonly rank: number
   readonly title: string
-  readonly url: string
+  readonly play?: number
   readonly image?: string
-  readonly score?: number
-  readonly description?: string
+  readonly author?: string
   public favorite: boolean
 
   constructor(
-    origin: Origin,
+    url: string = '',
+    rank: number = 0,
+    title: string = '',
+    play: number = 0,
     image: string = '',
-    rank: number,
-    title: string,
-    description: string,
-    url: string,
-    score: number,
-    favorite: boolean
+    author: string = '',
+    favorite: boolean = false
   ) {
     this.url = url
-    this.image = image
-    this.origin = origin
     this.rank = rank
     this.title = title
-    this.description = description
-    this.score = score
+    this.play = play
+    this.image = image
+    this.author = author
     this.favorite = false
   }
 }

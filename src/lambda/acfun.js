@@ -1,52 +1,39 @@
 const { request } = require('../utils/index')
 
-function generateMinute(minutes = 0) {
-  if (minutes < 10) {
-    return 0
-  } else {
-    return Math.ceil(minutes / 10) * 10
-  }
+const API =
+  'http://api.aixifan.com/searches/channel?sort=1&pageNo=1&pageSize=50&range=86400000&parentChannelId='
+
+function generateUrl(cid = 1) {
+  return `${API}${cid}`
 }
 
-const D = new Date()
-const startTime = new Date(
-  D.getUTCFullYear(),
-  D.getUTCMonth(),
-  D.getDate() - 1,
-  D.getHours(),
-  generateMinute(D.getMinutes()),
-  0,
-  0
-).getTime()
-
-const BASE = 'http://www.acfun.cn/'
-const URL = `http://webapi.acfun.cn/query/rank?parentChannelIds=&channelIds=&size=30&typeIds=1,3&sort=pageView&contributeTimeStart=${startTime}&isFource=true&order=1&page=1`
-
 exports.handler = async (event, context) => {
-  const rankList = []
-  const res = await request(URL, false).then(res => JSON.parse(res))
+  const { cid } = event.queryStringParameters
+  const url = generateUrl(cid)
 
-  if (res.code === 200) {
-    res.data.hits.forEach((item, index) => {
-      if (rankList.length > 19) {
-        return
-      }
+  const list = await request(url, {
+    scheme: 'http:',
+    headers: { deviceType: 2 }
+  }).then(res => JSON.parse(res).data.list)
 
-      rankList.push({
-        rank: index + 1,
-        origin: 'ACFUN',
-        title: item.title,
-        url: `${BASE}${item.channel_path}/ac${item.id}`,
-        score: item.view_count
-      })
+  const rank = []
+
+  list.forEach((item, index) => {
+    rank.push({
+      url: `http://www.acfun.cn/v/ac${item.contentId}`,
+      rank: index + 1,
+      title: item.title,
+      play: item.views,
+      image: item.cover,
+      author: item.user.username
     })
-  }
+  })
 
   return {
-    statusCode: 200,
     headers: {
       'Content-Type': 'application/json'
     },
-    body: JSON.stringify(rankList)
+    statusCode: 200,
+    body: JSON.stringify(rank)
   }
 }

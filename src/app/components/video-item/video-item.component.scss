@@ -7,15 +7,18 @@
   justify-content: flex-start;
   align-items: center;
 }
+
+.rank {
+  padding-right: 0.5rem;
+}
+
 .video-item {
   color: #666;
   justify-content: space-between;
   &:hover {
     color: #333;
   }
-  .rank {
-    padding-right: 0.5rem;
-  }
+
   .title {
     flex: 1;
     margin: 0;

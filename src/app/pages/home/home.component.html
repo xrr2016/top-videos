@@ -1,13 +1,11 @@
 <mat-tab-group
   class="videos-tabs-group"
+  mat-stretch-tabs
   animationDuration="0ms"
   (selectedTabChange)="onSelectedTabChange($event)"
 >
-  <mat-tab label="Bilibili"> </mat-tab>
-  <mat-tab label="Acfun"> </mat-tab>
-  <mat-tab label="腾讯视频"> </mat-tab>
-  <mat-tab label="爱奇艺"> </mat-tab>
-  <mat-tab label="优酷视频"> </mat-tab>
+  <mat-tab label="Bilibili"></mat-tab>
+  <mat-tab label="Acfun"></mat-tab>
 </mat-tab-group>
 
 <ng-container *ngIf="isLoading; else elseTemplate">
@@ -16,31 +14,24 @@
   </div>
 </ng-container>
 <ng-template #elseTemplate>
-  <ng-container
-    *ngIf="origin === 'TENCENT' || origin === 'YOUKU'; else elseTemplate"
-  >
-    <div *ngFor="let item of videos; let index = index">
-      <mat-action-list class="tab-list">
-        <div class="container">
-          <p>{{ item.type }}</p>
-          <app-video-item
-            *ngFor="let video of item.list; let index = index"
-            [video]="video"
-          ></app-video-item>
-        </div>
-      </mat-action-list>
+  <mat-action-list class="tab-list">
+    <div class="container">
+      <mat-button-toggle-group
+        appearance="legacy"
+        name="fontStyle"
+        aria-label="Font Style"
+      >
+        <mat-button-toggle value="bold">Bold</mat-button-toggle>
+        <mat-button-toggle value="italic">Italic</mat-button-toggle>
+        <mat-button-toggle value="underline">Underline</mat-button-toggle>
+      </mat-button-toggle-group>
+
+      <app-video-item
+        *ngFor="let video of videos; let index = index"
+        [video]="video"
+      ></app-video-item>
     </div>
-  </ng-container>
-  <ng-template #elseTemplate>
-    <mat-action-list class="tab-list">
-      <div class="container">
-        <app-video-item
-          *ngFor="let video of videos; let index = index"
-          [video]="video"
-        ></app-video-item>
-      </div>
-    </mat-action-list>
-  </ng-template>
+  </mat-action-list>
 </ng-template>
 
 <!-- <img class="cover" [src]="video.image" [alt]="video.title" /> -->

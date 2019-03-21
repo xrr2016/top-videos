@@ -6,22 +6,31 @@
 const http = require('http')
 const https = require('https')
 
-function request(url = '', isHttps = true) {
+function request(
+  url = '',
+  options = {
+    scheme: 'https:',
+    headers: { 'Content-Type': 'application/json' }
+  }
+) {
   if (!url) {
     return
   }
+
   return new Promise((resolve, reject) => {
     let data = ''
+    const isHttps = options.scheme === 'https:'
+
     if (isHttps) {
       https
-        .get(url, res => {
+        .get(url, options, res => {
           res.on('data', d => (data += d))
           res.on('end', () => resolve(data))
         })
         .on('error', e => reject(e))
     } else {
       http
-        .get(url, res => {
+        .get(url, options, res => {
           res.on('data', d => (data += d))
           res.on('end', () => resolve(data))
         })
