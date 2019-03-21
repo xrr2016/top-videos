@@ -33,7 +33,7 @@ exports.handler = async (event, context) => {
       }
 
       rankList.push({
-        rank: index,
+        rank: index + 1,
         origin: 'ACFUN',
         title: item.title,
         url: `${BASE}${item.channel_path}/ac${item.id}`,

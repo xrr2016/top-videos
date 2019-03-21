@@ -35,7 +35,7 @@ exports.handler = async (event, context) => {
       }
 
       dataList.push({
-        rank: idx,
+        rank: idx + 1,
         origin: 'YOUKU',
         title: item.title,
         url: item.homepageurl,

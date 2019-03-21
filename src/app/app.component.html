@@ -5,13 +5,12 @@
       <mat-icon>more_vert</mat-icon>
     </button>
   </mat-toolbar-row>
+  <mat-menu #menu="matMenu">
+    <a mat-menu-item [routerLink]="'favorite'">我的收藏</a>
+    <a mat-menu-item [routerLink]="'about'">关于本站</a>
+  </mat-menu>
 </mat-toolbar>
 
-<mat-menu #menu="matMenu">
-  <a mat-menu-item [routerLink]="'favorite'">我的收藏</a>
-  <a mat-menu-item [routerLink]="'about'">关于本站</a>
-</mat-menu>
-
-<main>
+<main class="app-main">
   <router-outlet></router-outlet>
 </main>

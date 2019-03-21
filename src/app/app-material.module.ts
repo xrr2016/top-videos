@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core'
 import {
   MatButtonModule,
+  MatButtonToggleModule,
   MatCardModule,
   MatIconModule,
   MatListModule,
@@ -21,6 +22,7 @@ import {
     MatButtonModule,
     MatIconModule,
     MatToolbarModule,
+    MatButtonToggleModule,
     MatProgressSpinnerModule
   ]
 })

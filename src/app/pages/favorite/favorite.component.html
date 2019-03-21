@@ -1,3 +1,6 @@
-<p>
-  favorite works!
-</p>
+<mat-action-list class="container list">
+  <app-video-item
+    *ngFor="let video of videos; let index = index"
+    [video]="video"
+  ></app-video-item>
+</mat-action-list>

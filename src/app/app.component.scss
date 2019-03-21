@@ -1,14 +1,20 @@
+$toolbar-height: 52px;
+
 .app-toolbar {
   position: fixed;
   top: 0;
   left: 0;
   z-index: 10;
-  height: 52px;
-  min-height: 52px;
+  height: $toolbar-height;
+  min-height: $toolbar-height;
 }
 
 .app-toolbar__row {
   padding: 0;
   justify-content: space-between;
   height: 100%;
+}
+
+.app-main {
+  padding-top: $toolbar-height;
 }

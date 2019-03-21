@@ -20,7 +20,7 @@ exports.handler = async (event, context) => {
       }
 
       rankList.push({
-        rank: index,
+        rank: index + 1,
         origin: 'BILIBILI',
         title: $title.text(),
         url: $title.attr('href'),

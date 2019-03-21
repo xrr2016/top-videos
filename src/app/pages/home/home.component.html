@@ -20,7 +20,7 @@
     *ngIf="origin === 'TENCENT' || origin === 'YOUKU'; else elseTemplate"
   >
     <div *ngFor="let item of videos; let index = index">
-      <ol class="tab-list">
+      <mat-action-list class="tab-list">
         <div class="container">
           <p>{{ item.type }}</p>
           <app-video-item
@@ -28,18 +28,18 @@
             [video]="video"
           ></app-video-item>
         </div>
-      </ol>
+      </mat-action-list>
     </div>
   </ng-container>
   <ng-template #elseTemplate>
-    <ol class="tab-list">
+    <mat-action-list class="tab-list">
       <div class="container">
         <app-video-item
           *ngFor="let video of videos; let index = index"
           [video]="video"
         ></app-video-item>
       </div>
-    </ol>
+    </mat-action-list>
   </ng-template>
 </ng-template>
 

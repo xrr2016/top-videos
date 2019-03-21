@@ -31,7 +31,7 @@ exports.handler = async (event, context) => {
       }
 
       list.push({
-        rank: idx,
+        rank: idx + 1,
         origin: 'TENCENT',
         title: $link.find('img').attr('alt'),
         url: $link.attr('href'),

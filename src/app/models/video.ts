@@ -35,9 +35,4 @@ export class Video {
     this.score = score
     this.favorite = false
   }
-
-  toggleFavorite() {
-    this.favorite = !this.favorite
-    console.log('this.favorite :', this.favorite)
-  }
 }

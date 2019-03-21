@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core'
 import { Video } from 'src/app/models/video'
+import { FavoriteService } from 'src/app/services/favorite.service'
 
 @Component({
   selector: 'app-video-item',
@@ -9,7 +10,9 @@ import { Video } from 'src/app/models/video'
 export class VideoItemComponent implements OnInit {
   @Input() video: Video
 
-  constructor() {}
+  constructor(private favoriteService: FavoriteService) {}
 
   ngOnInit() {}
+
+  toggleFavorite() {}
 }

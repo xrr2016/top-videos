@@ -26,7 +26,7 @@ exports.handler = async (event, context) => {
       }
 
       rankList.push({
-        rank: index,
+        rank: index + 1,
         origin: 'IQIYI',
         title: $link.attr('title'),
         description: $content.find('h3').text(),

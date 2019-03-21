@@ -10,7 +10,6 @@ body {
   margin: 0;
   color: #324b64;
   line-height: 1.5;
-  padding-top: 52px;
   background: #f2f3f8;
 
   &::-webkit-scrollbar {
@@ -22,6 +21,9 @@ body {
   width: 98%;
   max-width: 1000px;
   margin: 0 auto;
+  .mat-list-item-content {
+    padding: 0 !important;
+  }
 }
 
 .videos-tabs-group {
