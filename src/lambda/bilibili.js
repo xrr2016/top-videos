@@ -6,16 +6,20 @@ function generateUrl(rid = 0) {
 }
 
 exports.handler = async (event, context) => {
-  const { rid } = event.queryStringParameters
-  const url = generateUrl(rid)
+  const { cid } = event.queryStringParameters
+  const url = generateUrl(cid)
   const list = await request(url).then(res => JSON.parse(res).data.list)
   const rank = []
 
   list.forEach((item, index) => {
+    if (rank.length > 29) {
+      return
+    }
     rank.push({
       url: `https://www.bilibili.com/video/av${item.aid}`,
       rank: index + 1,
       title: item.title,
+      origin: 0,
       play: item.play,
       image: item.pic,
       author: item.author

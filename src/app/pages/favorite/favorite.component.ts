@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core'
+import { MatSnackBar } from '@angular/material'
+import { Origin } from 'src/app/models/origin'
+import { Video } from 'src/app/models/video'
 import { FavoriteService } from 'src/app/services/favorite.service'
 
 @Component({
@@ -7,13 +10,35 @@ import { FavoriteService } from 'src/app/services/favorite.service'
   styleUrls: ['./favorite.component.scss']
 })
 export class FavoriteComponent implements OnInit {
-  videos: []
+  videos: Video[]
+  isLoading = false
 
-  constructor(private favoriteService: FavoriteService) {}
+  origins: Origin[]
+
+  constructor(
+    private favoriteService: FavoriteService,
+    public snackBar: MatSnackBar
+  ) {}
 
   ngOnInit() {
+    this.loadVideos()
+  }
+
+  loadVideos() {
+    this.isLoading = true
     this.favoriteService
       .getFavoriteVideos()
-      .then(val => console.log('val :', val))
+      .then(videos => {
+        this.videos = videos
+        this.isLoading = false
+      })
+      .catch(err => {
+        this.isLoading = false
+
+        const snackBarRef = this.snackBar.open('出错了，请重试!', '确定')
+        snackBarRef.afterDismissed().subscribe(() => {
+          this.loadVideos()
+        })
+      })
   }
 }

@@ -3,17 +3,27 @@ import {
   MatButtonModule,
   MatButtonToggleModule,
   MatCardModule,
+  MatCheckboxModule,
+  MatChipsModule,
   MatIconModule,
   MatListModule,
   MatMenuModule,
   MatProgressSpinnerModule,
+  MatRadioModule,
   MatRippleModule,
+  MatSelectModule,
+  MatSnackBarModule,
   MatTabsModule,
   MatToolbarModule
 } from '@angular/material'
 
 @NgModule({
   exports: [
+    MatSnackBarModule,
+    MatSelectModule,
+    MatCheckboxModule,
+    MatRadioModule,
+    MatChipsModule,
     MatRippleModule,
     MatCardModule,
     MatMenuModule,

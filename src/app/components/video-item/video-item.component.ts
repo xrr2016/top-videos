@@ -14,5 +14,12 @@ export class VideoItemComponent implements OnInit {
 
   ngOnInit() {}
 
-  toggleFavorite() {}
+  toggleFavorite() {
+    this.video.favorite = !this.video.favorite
+    if (this.video.favorite) {
+      this.favoriteService.setFavoriteVideo(this.video)
+    } else {
+      this.favoriteService.removeFavoriteVideo(this.video)
+    }
+  }
 }

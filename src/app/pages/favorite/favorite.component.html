@@ -1,6 +1,33 @@
-<mat-action-list class="container list">
-  <app-video-item
-    *ngFor="let video of videos; let index = index"
-    [video]="video"
-  ></app-video-item>
-</mat-action-list>
+<ng-container *ngIf="isLoading; else elseTemplate">
+  <div class="spiner-container">
+    <mat-spinner class="spiner" [diameter]="48"></mat-spinner>
+  </div>
+</ng-container>
+<ng-template #elseTemplate>
+  <ng-container *ngIf="videos.length <= 0; else elseTemplate">
+    <div class="container">
+      <p>没有数据</p>
+      <a [routerLink]="['/']">返回</a>
+    </div>
+  </ng-container>
+  <ng-template #elseTemplate>
+    <mat-action-list class="tab-list">
+      <div class="container">
+        <label class="example-margin">Origins:</label>
+        <!-- <mat-radio-group [value]="origins">
+          <mat-radio-button value="1">Acfun</mat-radio-button>
+          <mat-radio-button value="0">Bililibi</mat-radio-button>
+        </mat-radio-group> -->
+
+        <section class="example-section">
+          <mat-checkbox class="example-margin">Checked</mat-checkbox>
+          <mat-checkbox class="example-margin">Indeterminate</mat-checkbox>
+        </section>
+        <app-video-item
+          *ngFor="let video of videos; let index = index"
+          [video]="video"
+        ></app-video-item>
+      </div>
+    </mat-action-list>
+  </ng-template>
+</ng-template>

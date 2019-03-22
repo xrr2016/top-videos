@@ -1,7 +1,7 @@
 const { request } = require('../utils/index')
 
 const API =
-  'http://api.aixifan.com/searches/channel?sort=1&pageNo=1&pageSize=50&range=86400000&parentChannelId='
+  'http://api.aixifan.com/searches/channel?sort=1&pageNo=1&pageSize=30&range=86400000&parentChannelId='
 
 function generateUrl(cid = 1) {
   return `${API}${cid}`
@@ -19,10 +19,14 @@ exports.handler = async (event, context) => {
   const rank = []
 
   list.forEach((item, index) => {
+    if (rank.length > 29) {
+      return
+    }
     rank.push({
       url: `http://www.acfun.cn/v/ac${item.contentId}`,
       rank: index + 1,
       title: item.title,
+      origin: 1,
       play: item.views,
       image: item.cover,
       author: item.user.username

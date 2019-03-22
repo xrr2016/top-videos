@@ -8,25 +8,34 @@
   align-items: center;
 }
 
-.rank {
-  padding-right: 0.5rem;
-}
-
 .video-item {
   color: #666;
   justify-content: space-between;
+  padding: 0 0.5rem;
   &:hover {
     color: #333;
+  }
+
+  .rank {
+    padding-right: 12px;
   }
 
   .title {
     flex: 1;
     margin: 0;
     color: inherit;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
     text-decoration: none;
   }
-  .score {
+
+  .info {
+    padding-left: 22px;
     font-size: 0.8em;
+  }
+
+  .score {
     padding-right: 0.5rem;
   }
 }

@@ -1,7 +1,8 @@
 import { HttpClient } from '@angular/common/http'
 import { Injectable } from '@angular/core'
 import { Observable } from 'rxjs'
-import { Origin, Video } from '../models/video'
+import { Channel, Origin } from '../models/origin'
+import { Video } from '../models/video'
 
 @Injectable({
   providedIn: 'root'
@@ -9,18 +10,16 @@ import { Origin, Video } from '../models/video'
 export class VideoService {
   constructor(private http: HttpClient) {}
 
-  getTopVideos(origin: Origin): Observable<Video[]> {
-    switch (origin) {
-      case Origin.BILIBILI:
-        return this.http.get<Video[]>('/.netlify/functions/bilibili')
-      case Origin.ACFUN:
-        return this.http.get<Video[]>('/.netlify/functions/acfun')
-      case Origin.IQIYI:
-        return this.http.get<Video[]>('/.netlify/functions/iqiyi')
-      case Origin.TENCENT:
-        return this.http.get<Video[]>('/.netlify/functions/tencent')
-      case Origin.YOUKU:
-        return this.http.get<Video[]>('/.netlify/functions/youku')
+  getTopVideos(origin: Origin, channel: Channel): Observable<Video[]> {
+    switch (origin.index) {
+      case 0:
+        return this.http.get<Video[]>(
+          `/.netlify/functions/bilibili?cid=${channel.id}`
+        )
+      case 1:
+        return this.http.get<Video[]>(
+          `/.netlify/functions/acfun?cid=${channel.id}`
+        )
     }
   }
 }

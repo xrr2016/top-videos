@@ -2,11 +2,27 @@
   class="videos-tabs-group"
   mat-stretch-tabs
   animationDuration="0ms"
-  (selectedTabChange)="onSelectedTabChange($event)"
+  (selectedTabChange)="changeOrigin($event)"
 >
   <mat-tab label="Bilibili"></mat-tab>
   <mat-tab label="Acfun"></mat-tab>
 </mat-tab-group>
+
+<mat-button-toggle-group
+  class="toggle-group"
+  vertical
+  name="channel"
+  appearance="legacy"
+  aria-label="channel"
+>
+  <mat-button-toggle
+    *ngFor="let channel of origin.channels"
+    [value]="channel.id"
+    [checked]="channel.selected"
+    (change)="changeChannel(channel)"
+    >{{ channel.title }}</mat-button-toggle
+  >
+</mat-button-toggle-group>
 
 <ng-container *ngIf="isLoading; else elseTemplate">
   <div class="spiner-container">
@@ -16,16 +32,6 @@
 <ng-template #elseTemplate>
   <mat-action-list class="tab-list">
     <div class="container">
-      <mat-button-toggle-group
-        appearance="legacy"
-        name="fontStyle"
-        aria-label="Font Style"
-      >
-        <mat-button-toggle value="bold">Bold</mat-button-toggle>
-        <mat-button-toggle value="italic">Italic</mat-button-toggle>
-        <mat-button-toggle value="underline">Underline</mat-button-toggle>
-      </mat-button-toggle-group>
-
       <app-video-item
         *ngFor="let video of videos; let index = index"
         [video]="video"
@@ -33,5 +39,3 @@
     </div>
   </mat-action-list>
 </ng-template>
-
-<!-- <img class="cover" [src]="video.image" [alt]="video.title" /> -->
