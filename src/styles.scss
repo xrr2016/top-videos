@@ -10,7 +10,7 @@ body {
   margin: 0;
   color: #324b64;
   line-height: 1.5;
-  background: #f2f3f8;
+  background: #f4f5f5;
 
   &::-webkit-scrollbar {
     width: 0;
@@ -30,7 +30,8 @@ body {
   }
 }
 
-.videos-tabs-group {
+.tabs-group {
+  background-color: #fff;
   .mat-tab-labels {
     margin: 0 auto;
     max-width: 1000px;

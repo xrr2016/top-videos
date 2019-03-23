@@ -1,18 +1,19 @@
-<div class="video">
-  <mat-list-item class="video-item">
-    <a class="title" matLine [href]="video.url" target="_brank">
-      <span class="rank">{{ video.rank }}</span>
-      <span class="text">{{ video.title }}</span>
-    </a>
-    <p class="info" matLine>
-      <span class="score">played: {{ video?.play }}</span>
-      <span class="author">author: {{ video.author }}</span>
-    </p>
-  </mat-list-item>
-  <button mat-icon-button>
+<li class="list-item">
+  <a class="link" [href]="video.url" target="_brank">
+    <p class="rank">{{ video.rank }}</p>
+    <div class="content">
+      <h4 class="title">{{ video.title }}</h4>
+      <p class="info">
+        <mat-icon>whatshot</mat-icon>
+        <span class="item">{{ video?.play }}</span
+        ><mat-icon>person</mat-icon>
+        <span class="item">{{ video.author }}</span>
+      </p>
+    </div>
+  </a>
+  <button class="button" [ngClass]="{ show: video.favorite }" mat-icon-button>
     <mat-icon class="icon" (click)="toggleFavorite()">
       {{ video.favorite ? 'favorite' : 'favorite_outline' }}
     </mat-icon>
   </button>
-</div>
-<mat-divider></mat-divider>
+</li>

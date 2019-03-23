@@ -5,6 +5,7 @@ import {
   MatCardModule,
   MatCheckboxModule,
   MatChipsModule,
+  MatDialogModule,
   MatIconModule,
   MatListModule,
   MatMenuModule,
@@ -21,6 +22,7 @@ import {
   exports: [
     MatSnackBarModule,
     MatSelectModule,
+    MatDialogModule,
     MatCheckboxModule,
     MatRadioModule,
     MatChipsModule,

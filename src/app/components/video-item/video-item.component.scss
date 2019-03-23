@@ -2,40 +2,86 @@
 //
 // This software is released under the MIT License.
 // https://opensource.org/licenses/MIT
-.video {
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-}
 
-.video-item {
+.list-item {
+  position: relative;
   color: #666;
-  justify-content: space-between;
-  padding: 0 0.5rem;
+  list-style: none;
+  background-color: #fff;
+  border-bottom: 1px solid #f1f1f1;
+
   &:hover {
-    color: #333;
+    background-color: rgba(0, 0, 0, 0.01);
+    .title {
+      color: #333;
+    }
+    .button {
+      opacity: 1;
+      visibility: visible;
+    }
   }
-
-  .rank {
-    padding-right: 12px;
-  }
-
-  .title {
-    flex: 1;
-    margin: 0;
+  .link {
+    display: flex;
+    align-items: center;
+    padding: 1rem 0 0.75rem 0;
     color: inherit;
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
     text-decoration: none;
+
+    .rank {
+      width: 50px;
+      text-align: center;
+    }
+
+    .content {
+      flex: 1;
+    }
+
+    .title {
+      margin: 0;
+      margin-bottom: 1rem;
+      font-weight: 500;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+
+    .info {
+      display: flex;
+      align-items: center;
+      margin: 0;
+      font-size: 0.8em;
+      .mat-icon {
+        width: 20px;
+        height: 20px;
+        line-height: 20px;
+        text-align: center;
+        font-size: 1rem;
+      }
+
+      .item {
+        padding: 0 1rem 0 0.1rem;
+      }
+    }
+
+    .score {
+      padding-right: 0.5rem;
+    }
   }
 
-  .info {
-    padding-left: 22px;
-    font-size: 0.8em;
-  }
-
-  .score {
-    padding-right: 0.5rem;
+  .button {
+    position: absolute;
+    top: 50%;
+    right: 1rem;
+    transform: translateY(-50%);
+    opacity: 0;
+    visibility: hidden;
+    &.show {
+      opacity: 1;
+      visibility: visible;
+    }
   }
 }

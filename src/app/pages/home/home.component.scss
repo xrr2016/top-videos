@@ -3,27 +3,48 @@
 // This software is released under the MIT License.
 // https://opensource.org/licenses/MIT
 
-$content-height: calc(100vh - 52px - 49px - 32px);
+$content-height: calc(100vh - 60px - 48px - 12px);
 
-.spiner-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: $content-height;
-}
-
-.toggle-group {
+.tabs-group {
   position: fixed;
-  top: 120px;
-  left: calc((100vw - 1000px) / 4 + 1rem);
+  top: 60px;
+  left: 0;
+  width: 100vw;
   z-index: 10;
 }
 
-.tab-list {
+.home-container {
   position: relative;
-  padding: 1rem 0 2rem 0;
-  height: $content-height;
-  max-height: $content-height;
-  overflow-x: hidden;
-  overflow-y: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  width: 98%;
+  max-width: 1000px;
+  min-height: $content-height;
+  margin: 0 auto;
+  padding-top: 60px;
+  padding-bottom: 1rem;
+}
+
+.toggle-group {
+  position: sticky;
+  top: 120px;
+  margin-right: 1rem;
+  background-color: #fff;
+}
+
+.spiner {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  margin: auto;
+}
+
+.tab-list {
+  flex: 1;
+  position: relative;
+  margin: 0;
+  padding: 0;
 }

@@ -48,7 +48,7 @@ export class FavoriteService {
       .catch(err => err)
   }
 
-  async clearFavoriteVideo(video: Video) {
+  async clearFavoriteVideo() {
     return localforage
       .clear()
       .then(() => true, () => false)

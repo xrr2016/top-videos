@@ -1,6 +1,28 @@
+.origin-container {
+  display: flex;
+  align-items: center;
+  padding-left: 1rem;
+  margin: 1rem auto;
+  background-color: #fff;
+  box-sizing: border-box;
+  .box {
+    flex: 1;
+    padding: 1rem 0;
+  }
+  .origin-checkbox {
+    padding-right: 1rem;
+  }
+}
+
 .spiner-container {
   display: flex;
   justify-content: center;
   align-items: center;
   height: calc(100vh - 52px - 32px);
+}
+
+.video-item-list {
+  padding: 0;
+  padding-bottom: 2rem;
+  margin: 0 auto;
 }

@@ -1,4 +1,4 @@
-$toolbar-height: 52px;
+$toolbar-height: 60px;
 
 .app-toolbar {
   position: fixed;
@@ -7,6 +7,9 @@ $toolbar-height: 52px;
   z-index: 10;
   height: $toolbar-height;
   min-height: $toolbar-height;
+  background-color: #fff;
+  border-bottom: 1px solid #f1f1f1;
+  border-top: 2px solid #673ab7;
 }
 
 .app-toolbar__row {

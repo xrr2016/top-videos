@@ -1,3 +1,17 @@
+<section class="container origin-container">
+  <span class="box">
+    <mat-checkbox
+      class="origin-checkbox"
+      *ngFor="let item of checkboxs"
+      [name]="item.origin"
+      [checked]="item.checked"
+      (change)="toggleVidoesOrigin($event)"
+      >{{ item.text }}</mat-checkbox
+    >
+  </span>
+  <button mat-button color="warn">清除收藏</button>
+</section>
+
 <ng-container *ngIf="isLoading; else elseTemplate">
   <div class="spiner-container">
     <mat-spinner class="spiner" [diameter]="48"></mat-spinner>
@@ -11,23 +25,11 @@
     </div>
   </ng-container>
   <ng-template #elseTemplate>
-    <mat-action-list class="tab-list">
-      <div class="container">
-        <label class="example-margin">Origins:</label>
-        <!-- <mat-radio-group [value]="origins">
-          <mat-radio-button value="1">Acfun</mat-radio-button>
-          <mat-radio-button value="0">Bililibi</mat-radio-button>
-        </mat-radio-group> -->
-
-        <section class="example-section">
-          <mat-checkbox class="example-margin">Checked</mat-checkbox>
-          <mat-checkbox class="example-margin">Indeterminate</mat-checkbox>
-        </section>
-        <app-video-item
-          *ngFor="let video of videos; let index = index"
-          [video]="video"
-        ></app-video-item>
-      </div>
-    </mat-action-list>
+    <ul class="container video-item-list">
+      <app-video-item
+        *ngFor="let video of renderVideos; let index = index"
+        [video]="video"
+      ></app-video-item>
+    </ul>
   </ng-template>
 </ng-template>
