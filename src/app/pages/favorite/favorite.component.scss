@@ -21,8 +21,11 @@
   height: calc(100vh - 52px - 32px);
 }
 
+.empty-list {
+  background-color: #fff;
+}
+
 .video-item-list {
   padding: 0;
-  padding-bottom: 2rem;
   margin: 0 auto;
 }

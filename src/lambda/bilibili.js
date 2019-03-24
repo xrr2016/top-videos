@@ -8,7 +8,13 @@ function generateUrl(rid = 0) {
 exports.handler = async (event, context) => {
   const { cid } = event.queryStringParameters
   const url = generateUrl(cid)
-  const list = await request(url).then(res => JSON.parse(res).data.list)
+  const list = await request(url).then(res => {
+    const result = JSON.parse(res)
+    if (result.code !== 0) {
+      return
+    }
+    return result.data.list
+  })
   const rank = []
 
   list.forEach((item, index) => {
@@ -19,7 +25,7 @@ exports.handler = async (event, context) => {
       url: `https://www.bilibili.com/video/av${item.aid}`,
       rank: index + 1,
       title: item.title,
-      origin: 0,
+      origin: 'bilibili',
       play: item.play,
       image: item.pic,
       author: item.author

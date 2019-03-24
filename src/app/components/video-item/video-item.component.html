@@ -1,6 +1,8 @@
 <li class="list-item">
   <a class="link" [href]="video.url" target="_brank">
-    <p class="rank">{{ video.rank }}</p>
+    <p class="rank" [ngClass]="{ 'is-bold': video.rank <= 3 }">
+      {{ video.rank }}
+    </p>
     <div class="content">
       <h4 class="title">{{ video.title }}</h4>
       <p class="info">
@@ -8,6 +10,9 @@
         <span class="item">{{ video?.play }}</span
         ><mat-icon>person</mat-icon>
         <span class="item">{{ video.author }}</span>
+        <mat-chip-list *ngIf="page === 'favorite'">
+          <mat-chip>{{ video.origin }}</mat-chip>
+        </mat-chip-list>
       </p>
     </div>
   </a>

@@ -36,7 +36,6 @@ export class HomeComponent implements OnInit {
         break
     }
 
-    this.origin.channels[0].selected = true
     this.channel = this.origin.channels[0]
     this.getVideos()
   }

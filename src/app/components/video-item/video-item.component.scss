@@ -30,6 +30,9 @@
     .rank {
       width: 50px;
       text-align: center;
+      &.is-bold {
+        font-weight: 600;
+      }
     }
 
     .content {

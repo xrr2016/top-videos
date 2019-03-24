@@ -18,6 +18,11 @@ $toolbar-height: 60px;
   height: 100%;
 }
 
+.logo {
+  color: inherit;
+  text-decoration: none;
+}
+
 .app-main {
   padding-top: $toolbar-height;
 }

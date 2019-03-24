@@ -22,12 +22,6 @@ body {
   width: 98%;
   max-width: 1000px;
   margin: 0 auto;
-  .mat-list-item-content {
-    padding: 0 !important;
-  }
-  .mat-button-toggle-label-content {
-    text-align: center;
-  }
 }
 
 .tabs-group {
@@ -35,5 +29,13 @@ body {
   .mat-tab-labels {
     margin: 0 auto;
     max-width: 1000px;
+  }
+}
+
+.link {
+  color: inherit;
+  text-decoration: none;
+  &:hover {
+    text-decoration: underline;
   }
 }

@@ -14,11 +14,18 @@ exports.handler = async (event, context) => {
   const list = await request(url, {
     scheme: 'http:',
     headers: { deviceType: 2 }
-  }).then(res => JSON.parse(res).data.list)
+  }).then(res => {
+    const result = JSON.parse(res)
+    if (result.code !== 200) {
+      return
+    }
+    return result.data.list
+  })
 
   const rank = []
 
   list.forEach((item, index) => {
+    console.log('item :', item)
     if (rank.length > 29) {
       return
     }
@@ -26,7 +33,7 @@ exports.handler = async (event, context) => {
       url: `http://www.acfun.cn/v/ac${item.contentId}`,
       rank: index + 1,
       title: item.title,
-      origin: 1,
+      origin: 'acfun',
       play: item.views,
       image: item.cover,
       author: item.user.username

@@ -3,3 +3,13 @@
 // This software is released under the MIT License.
 // https://opensource.org/licenses/MIT
 
+.about {
+  padding: 1rem;
+  margin: 1rem auto;
+  background-color: #fff;
+
+  .left {
+    display: inline-block;
+    width: 80px;
+  }
+}

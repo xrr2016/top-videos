@@ -1,45 +1,13 @@
 import { Component, OnInit } from '@angular/core'
-import {
-  MatCheckboxChange,
-  MatDialog,
-  MatDialogRef,
-  MatSnackBar
-} from '@angular/material'
+import { MatCheckboxChange, MatDialog, MatSnackBar } from '@angular/material'
+import { ClearFavoriteComponent } from 'src/app/components/clear-favorite/clear-favorite.component'
 import { Video } from 'src/app/models/video'
 import { FavoriteService } from 'src/app/services/favorite.service'
 
 interface OriginCheckbox {
-  origin: number
+  origin: string
   checked: boolean
   text: string
-}
-
-@Component({
-  styles: [
-    `
-      .modal {
-        width: 300px;
-      }
-    `
-  ],
-  template: `
-    <div class="modal">
-      <p mat-dialog-title>清除收藏？</p>
-      <div mat-dialog-actions>
-        <button mat-button [mat-dialog-close]="result">取消</button>
-        <button mat-button []>确定</button>
-      </div>
-    </div>
-  `
-})
-class ClearFavoriteDialogComponent {
-  result: boolean
-
-  constructor(public dialogRef: MatDialogRef<ClearFavoriteDialogComponent>) {}
-
-  cancel() {
-    this.dialogRef.close()
-  }
 }
 
 @Component({
@@ -53,8 +21,8 @@ export class FavoriteComponent implements OnInit {
   renderVideos: Video[]
 
   checkboxs: OriginCheckbox[] = [
-    { origin: 1, checked: true, text: 'Acfun' },
-    { origin: 0, checked: true, text: 'Bilibili' }
+    { origin: 'acfun', checked: true, text: 'Acfun' },
+    { origin: 'bilibili', checked: true, text: 'Bilibili' }
   ]
 
   constructor(
@@ -89,21 +57,30 @@ export class FavoriteComponent implements OnInit {
   toggleVidoesOrigin(event: MatCheckboxChange) {
     const checked = event.checked
     const origin = event.source.name
+    const checkbox = this.checkboxs.find(c => c.origin === origin)
+    checkbox.checked = checked
 
-    if (checked) {
-      this.renderVideos.concat(this.videos.filter(v => v.origin === +origin))
-    } else {
-      this.renderVideos = this.videos.filter(v => v.origin !== +origin)
+    const videos = []
+
+    for (const item of this.checkboxs) {
+      const originVideos = this.videos.filter(v => v.origin === item.origin)
+      if (item.checked) {
+        originVideos.forEach(v => videos.push(v))
+      }
     }
+
+    this.renderVideos = videos
   }
 
   showClearDialog() {
-    const dialogRef = this.dialog.open(ClearFavoriteDialogComponent, {
-      height: '400px',
-      width: '600px'
-    })
+    if (!this.videos.length) {
+      return
+    }
+    const dialogRef = this.dialog.open(ClearFavoriteComponent, {})
     dialogRef.afterClosed().subscribe(result => {
-      console.log('result :', result)
+      if (result) {
+        this.clearFavoriteVideos()
+      }
     })
   }
 

@@ -2,7 +2,7 @@ export class Video {
   readonly url: string
   readonly rank: number
   readonly title: string
-  readonly origin: number
+  readonly origin: string
   readonly play?: number
   readonly image?: string
   readonly author?: string
@@ -12,7 +12,7 @@ export class Video {
     url: string = '',
     rank: number = 0,
     title: string = '',
-    origin: number = 0,
+    origin: string = '',
     play: number = 0,
     image: string = '',
     author: string = '',

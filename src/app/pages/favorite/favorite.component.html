@@ -1,4 +1,4 @@
-<section class="container origin-container">
+<section class="mat-elevation-z1 container origin-container">
   <span class="box">
     <mat-checkbox
       class="origin-checkbox"
@@ -9,7 +9,14 @@
       >{{ item.text }}</mat-checkbox
     >
   </span>
-  <button mat-button color="warn">清除收藏</button>
+  <button
+    mat-button
+    color="warn"
+    [disabled]="!videos?.length"
+    (click)="showClearDialog()"
+  >
+    清除收藏
+  </button>
 </section>
 
 <ng-container *ngIf="isLoading; else elseTemplate">
@@ -19,15 +26,20 @@
 </ng-container>
 <ng-template #elseTemplate>
   <ng-container *ngIf="videos.length <= 0; else elseTemplate">
-    <div class="container">
-      <p>没有数据</p>
-      <a [routerLink]="['/']">返回</a>
-    </div>
+    <mat-list class="mat-elevation-z1 container empty-list">
+      <mat-list-item>
+        <p>没有收藏，快去添加吧</p>
+      </mat-list-item>
+      <mat-list-item>
+        <a class="link" [routerLink]="['/']">返回</a>
+      </mat-list-item>
+    </mat-list>
   </ng-container>
   <ng-template #elseTemplate>
-    <ul class="container video-item-list">
+    <ul class="mat-elevation-z1 container video-item-list">
       <app-video-item
         *ngFor="let video of renderVideos; let index = index"
+        [page]="'favorite'"
         [video]="video"
       ></app-video-item>
     </ul>

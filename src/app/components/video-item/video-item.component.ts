@@ -9,6 +9,7 @@ import { FavoriteService } from 'src/app/services/favorite.service'
 })
 export class VideoItemComponent implements OnInit {
   @Input() video: Video
+  @Input() page: string
 
   constructor(private favoriteService: FavoriteService) {}
 

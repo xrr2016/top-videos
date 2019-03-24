@@ -29,6 +29,7 @@ $content-height: calc(100vh - 60px - 48px - 12px);
 .toggle-group {
   position: sticky;
   top: 120px;
+  min-width: 80px;
   margin-right: 1rem;
   background-color: #fff;
 }

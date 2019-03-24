@@ -5,10 +5,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { AppMaterialModule } from './app-material.module'
 import { AppRoutingModule } from './app-routing.module'
 import { AppComponent } from './app.component'
+import { ClearFavoriteComponent } from './components/clear-favorite/clear-favorite.component'
+import { VideoItemComponent } from './components/video-item/video-item.component'
 import { AboutComponent } from './pages/about/about.component'
 import { FavoriteComponent } from './pages/favorite/favorite.component'
-import { HomeComponent } from './pages/home/home.component';
-import { VideoItemComponent } from './components/video-item/video-item.component'
+import { HomeComponent } from './pages/home/home.component'
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { VideoItemComponent } from './components/video-item/video-item.component
     HomeComponent,
     AboutComponent,
     FavoriteComponent,
-    VideoItemComponent
+    VideoItemComponent,
+    ClearFavoriteComponent
   ],
   imports: [
     BrowserModule,
@@ -25,6 +27,7 @@ import { VideoItemComponent } from './components/video-item/video-item.component
     AppMaterialModule,
     BrowserAnimationsModule
   ],
+  entryComponents: [ClearFavoriteComponent],
   providers: [],
   bootstrap: [AppComponent]
 })
