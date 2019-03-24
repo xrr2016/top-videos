@@ -18,39 +18,49 @@ function request(
   }
 
   return new Promise((resolve, reject) => {
-    let data = ''
+    let rawData = ''
     const isHttps = options.scheme === 'https:'
 
     if (isHttps) {
       https
         .get(url, options, res => {
+          res.setEncoding('utf8')
           res.on('data', d => {
-            data += d
+            rawData += d
           })
           res.on('end', () => {
-            resolve(data)
+            try {
+              const parsedData = JSON.parse(rawData)
+              resolve(parsedData)
+            } catch (e) {
+              reject(e.message)
+            }
           })
         })
         .on('error', e => {
-          reject(e)
+          reject(e.message)
         })
     } else {
       http
         .get(url, options, res => {
+          res.setEncoding('utf8')
           res.on('data', d => {
-            data += d
+            rawData += d
           })
           res.on('end', () => {
-            resolve(data)
+            try {
+              const parsedData = JSON.parse(rawData)
+              resolve(parsedData)
+            } catch (e) {
+              reject(e.message)
+            }
           })
         })
         .on('error', e => {
-          reject(e)
+          reject(e.message)
         })
     }
   })
 }
 
-module.exports = {
-  request
-}
+module.exports = request

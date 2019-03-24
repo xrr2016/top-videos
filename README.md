@@ -1,4 +1,6 @@
-# TopVidoes
+# Top Videos
+
+[![Netlify Status](https://api.netlify.com/api/v1/badges/4060f856-a955-4152-a8b6-82f871a4821d/deploy-status)](https://app.netlify.com/sites/top-videos/deploys)
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.3.5.
 

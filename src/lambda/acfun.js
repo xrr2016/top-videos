@@ -1,4 +1,4 @@
-const { request } = require('../utils/index')
+const request = require('../utils/index')
 
 const API =
   'http://api.aixifan.com/searches/channel?sort=1&pageNo=1&pageSize=30&range=86400000&parentChannelId='
@@ -14,8 +14,7 @@ exports.handler = async (event, context) => {
   const list = await request(url, {
     scheme: 'http:',
     headers: { deviceType: 2 }
-  }).then(res => {
-    const result = JSON.parse(res)
+  }).then(result => {
     if (result.code !== 200) {
       return
     }
@@ -25,7 +24,6 @@ exports.handler = async (event, context) => {
   const rank = []
 
   list.forEach((item, index) => {
-    console.log('item :', item)
     if (rank.length > 29) {
       return
     }

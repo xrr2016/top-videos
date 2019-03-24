@@ -1,4 +1,4 @@
-const { request } = require('../utils/index')
+const request = require('../utils/index')
 const API = 'https://api.bilibili.com/x/web-interface/ranking?day=3&rid='
 
 function generateUrl(rid = 0) {
@@ -8,8 +8,7 @@ function generateUrl(rid = 0) {
 exports.handler = async (event, context) => {
   const { cid } = event.queryStringParameters
   const url = generateUrl(cid)
-  const list = await request(url).then(res => {
-    const result = JSON.parse(res)
+  const list = await request(url).then(result => {
     if (result.code !== 0) {
       return
     }
