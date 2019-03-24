@@ -24,17 +24,29 @@ function request(
     if (isHttps) {
       https
         .get(url, options, res => {
-          res.on('data', d => (data += d))
-          res.on('end', () => resolve(data))
+          res.on('data', d => {
+            data += d
+          })
+          res.on('end', () => {
+            resolve(data)
+          })
         })
-        .on('error', e => reject(e))
+        .on('error', e => {
+          reject(e)
+        })
     } else {
       http
         .get(url, options, res => {
-          res.on('data', d => (data += d))
-          res.on('end', () => resolve(data))
+          res.on('data', d => {
+            data += d
+          })
+          res.on('end', () => {
+            resolve(data)
+          })
         })
-        .on('error', e => reject(e))
+        .on('error', e => {
+          reject(e)
+        })
     }
   })
 }
