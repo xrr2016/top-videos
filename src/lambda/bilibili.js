@@ -1,4 +1,5 @@
-const request = require('../utils/index')
+import fetch from 'node-fetch'
+
 const API = 'https://api.bilibili.com/x/web-interface/ranking?day=3&rid='
 
 function generateUrl(rid = 0) {
@@ -8,12 +9,17 @@ function generateUrl(rid = 0) {
 exports.handler = async (event, context) => {
   const { cid } = event.queryStringParameters
   const url = generateUrl(cid)
-  const list = await request(url).then(result => {
-    if (result.code !== 0) {
-      return
-    }
-    return result.data.list
-  })
+
+  const list = await fetch(url)
+    .then(response => response.json())
+    .then(result => {
+      if (result.code !== 0) {
+        return []
+      }
+      return result.data.list
+    })
+    .catch(err => [])
+
   const rank = []
 
   list.forEach((item, index) => {
@@ -32,10 +38,10 @@ exports.handler = async (event, context) => {
   })
 
   return {
+    statusCode: 200,
     headers: {
       'Content-Type': 'application/json'
     },
-    statusCode: 200,
     body: JSON.stringify(rank)
   }
 }

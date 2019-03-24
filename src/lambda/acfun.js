@@ -1,4 +1,4 @@
-const request = require('../utils/index')
+import fetch from 'node-fetch'
 
 const API =
   'http://api.aixifan.com/searches/channel?sort=1&pageNo=1&pageSize=30&range=86400000&parentChannelId='
@@ -11,15 +11,17 @@ exports.handler = async (event, context) => {
   const { cid } = event.queryStringParameters
   const url = generateUrl(cid)
 
-  const list = await request(url, {
-    scheme: 'http:',
+  const list = await fetch(url, {
     headers: { deviceType: 2 }
-  }).then(result => {
-    if (result.code !== 200) {
-      return
-    }
-    return result.data.list
   })
+    .then(response => response.json())
+    .then(result => {
+      if (result.code !== 200) {
+        return []
+      }
+      return result.data.list
+    })
+    .catch(err => [])
 
   const rank = []
 

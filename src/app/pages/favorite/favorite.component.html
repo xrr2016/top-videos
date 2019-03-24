@@ -36,12 +36,14 @@
     </mat-list>
   </ng-container>
   <ng-template #elseTemplate>
-    <ul class="mat-elevation-z1 container video-item-list">
-      <app-video-item
-        *ngFor="let video of renderVideos; let index = index"
-        [page]="'favorite'"
-        [video]="video"
-      ></app-video-item>
-    </ul>
+    <section class="list-container">
+      <ul class="mat-elevation-z1 container video-item-list">
+        <app-video-item
+          *ngFor="let video of renderVideos; let index = index"
+          [page]="'favorite'"
+          [video]="video"
+        ></app-video-item>
+      </ul>
+    </section>
   </ng-template>
 </ng-template>
