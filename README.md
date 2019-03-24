@@ -34,7 +34,7 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 ## Contributing
 
-1. Fork it (<https://github.com/xrr2016/xx-champion.git>)
+1. Fork it (<https://github.com/xrr2016/top-videos.git>)
 2. Create your feature branch (`git checkout -b feature/fooBar`)
 3. Commit your changes (`git commit -am 'Add some fooBar'`)
 4. Push to the branch (`git push origin feature/fooBar`)
