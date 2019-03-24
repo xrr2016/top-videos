@@ -23,7 +23,7 @@ function request(
 
     if (isHttps) {
       https
-        .get(url, options, res => {
+        .get(url, res => {
           res.setEncoding('utf8')
           res.on('data', d => {
             rawData += d
@@ -42,7 +42,7 @@ function request(
         })
     } else {
       http
-        .get(url, options, res => {
+        .get(url, res => {
           res.setEncoding('utf8')
           res.on('data', d => {
             rawData += d
